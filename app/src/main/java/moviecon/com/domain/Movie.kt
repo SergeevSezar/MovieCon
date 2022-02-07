@@ -1,16 +1,20 @@
 package moviecon.com.domain
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "movies")
 data class Movie(
-    @SerializedName("backdrop_path")
-    @Expose
-    val backdropPath: String,
-
+    @PrimaryKey
     @SerializedName("id")
     @Expose
     val id: Int,
+
+    @SerializedName("backdrop_path")
+    @Expose
+    val backdropPath: String,
 
     @SerializedName("original_title")
     @Expose

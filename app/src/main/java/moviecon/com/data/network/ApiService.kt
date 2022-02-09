@@ -17,6 +17,20 @@ interface ApiService {
         @Query(QUERY_PARAM_MONETIZATION_TYPES) monetization: String = MONETIZATION_TYPES
     ): Single<MovieList>
 
+    @GET("movie/popular")
+    fun getPopularityMovies(
+        @Query(QUERY_PARAM_API_KEY) apiKey: String = "485fbc212ab76526edb2699c29b0657d",
+        @Query(QUERY_PARAM_LANGUAGE) language: String = "ru-RU",
+        @Query(QUERY_PARAM_PAGE) page: Int = 1,
+    ): Single<MovieList>
+
+    @GET("movie/top_rated")
+    fun getTopRatedMovies(
+        @Query(QUERY_PARAM_API_KEY) apiKey: String = "485fbc212ab76526edb2699c29b0657d",
+        @Query(QUERY_PARAM_LANGUAGE) language: String = "ru-RU",
+        @Query(QUERY_PARAM_PAGE) page: Int = 1,
+    ): Single<MovieList>
+
     companion object {
         private const val QUERY_PARAM_API_KEY = "api_key"
         private const val QUERY_PARAM_LANGUAGE = "language"

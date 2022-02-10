@@ -16,8 +16,20 @@ class MovieViewModel(application: Application): AndroidViewModel(application) {
 
     val movieList = db.movieInfoDao().getAllMovies()
 
-    fun loadData() {
+    fun loadPopularMovies() {
         val disposable = ApiFactory.apiService.getPopularityMovies()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                Log.d("TEST", it.toString())
+            },{
+                Log.d("TEST", it.message.orEmpty())
+            })
+        compositeDisposable.add(disposable)
+    }
+
+    fun loadTopRatedMovies() {
+        val disposable = ApiFactory.apiService.getTopRatedMovies()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

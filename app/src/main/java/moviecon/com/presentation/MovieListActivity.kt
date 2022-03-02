@@ -1,6 +1,7 @@
 package moviecon.com.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -23,8 +24,10 @@ class MovieListActivity : AppCompatActivity() {
         binding.rvMoviePoster.adapter = adapter
 
         viewModel = ViewModelProvider.AndroidViewModelFactory(application).create(MovieViewModel::class.java)
+        viewModel.loadPopularMovies()
         viewModel.movieList.observe(this, Observer {
-            adapter.movieList = it
+            //adapter.submitList(it)
+            //Log.d("TEST activity", "success: $it")
         })
     }
 }

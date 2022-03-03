@@ -10,12 +10,6 @@ import moviecon.com.domain.Movie
 
 class MovieAdapter(private val context: Context): ListAdapter<Movie, MovieViewHolder>(MovieDiffCallback) {
 
-    var movieList: List<Movie> = listOf()
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
-
     var onClickListener: OnMovieClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {

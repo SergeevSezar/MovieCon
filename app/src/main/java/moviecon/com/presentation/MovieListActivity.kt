@@ -26,7 +26,7 @@ class MovieListActivity : AppCompatActivity() {
         viewModel = ViewModelProvider.AndroidViewModelFactory(application).create(MovieViewModel::class.java)
         viewModel.loadPopularMovies()
         viewModel.movieList.observe(this, Observer {
-            //adapter.submitList(it)
+            adapter.submitList(it)
             //Log.d("TEST activity", "success: $it")
         })
     }

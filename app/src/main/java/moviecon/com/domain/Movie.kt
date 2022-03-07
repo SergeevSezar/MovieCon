@@ -43,9 +43,4 @@ data class Movie(
     @SerializedName("vote_count")
     @Expose
     val voteCount: Int
-) {
-
-    fun getFullImageUrl():String {
-        return posterPath;
-    }
-}
+)

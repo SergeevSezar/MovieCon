@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.squareup.picasso.Picasso
+import moviecon.com.data.network.ApiFactory
 import moviecon.com.databinding.MovieItemBinding
 import moviecon.com.domain.Movie
 
@@ -21,7 +22,7 @@ class MovieAdapter(private val context: Context): ListAdapter<Movie, MovieViewHo
         val movie = getItem(position)
         with(holder.binding) {
             with(movie) {
-                Picasso.get().load(posterPath).into(ivMoviePoster)
+                Picasso.get().load(ApiFactory.getFullBigImageUrl(movie.posterPath)).into(ivMoviePoster)
             }
         }
     }
